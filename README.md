@@ -1,3 +1,5 @@
+## Integrating Wazuh with Express
+
 Create new integration file `nano /var/ossec/integrations/custom-chatbot-webhook`
 
 Let's add below code to the file
@@ -39,7 +41,7 @@ Add below integration script
 <integration>
     <name>custom-chatbot-webhook</name>
     <hook_url>https://39b4-114-125-222-178.ngrok-free.app/wazuh/alerts</hook_url>
-    <api_key>53e77cc185af5fbbc5c82948d3e854abaf03fbacbf1da503392876ff2ff873d8</api_key>  # Same as WEBHOOK_SECRET
+    <api_key>xxxx</api_key>  # Same as WEBHOOK_SECRET
     <level>3</level>  # Minimum alert level to forward
     <alert_format>json</alert_format>
 </integration>
@@ -49,4 +51,4 @@ Your custom integration name must start with "**custom-**" like above.
 
 Then restart the wazuh manager `systemctl restart wazuh-manager`.
 
-Make sure your webhook secret is same as wazuh signature
+Make sure your webhook secret is same as wazuh signature.
