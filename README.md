@@ -1,3 +1,5 @@
+## Integrating Wazuh with Express
+
 Create new integration file `nano /var/ossec/integrations/custom-chatbot-webhook`
 
 Let's add below code to the file
