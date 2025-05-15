@@ -49,6 +49,13 @@ Add below integration script
 
 Your custom integration name must start with "**custom-**" like above.
 
+Give proper permission for the script custom integration
+
+`chmod 750 /var/ossec/integrations/custom-chatbot-webhook`
+
+`chown root:wazuh /var/ossec/integrations/custom-chatbot-webhook
+`
+
 Then restart the wazuh manager `systemctl restart wazuh-manager`.
 
 Make sure your webhook secret is same as wazuh signature.
