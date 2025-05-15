@@ -7,9 +7,9 @@ Let's add below code to the file
 ```
 #!/bin/bash
 
-ALERT_FILE="$1"
+ALERT_FILE="$3"
 WEBHOOK_SECRET="$2"
-WEBHOOK_URL="$3"
+WEBHOOK_URL="$1"
 
 if [ ! -r ${ALERT_FILE} ]; then
     echo "Cannot read ${ALERT_FILE}" >> /var/ossec/logs/integrations.log
