@@ -1,5 +1,6 @@
 ## Integrating Wazuh with Express
 
+### Custom Integration Script
 Create new integration file `nano /var/ossec/integrations/custom-chatbot-webhook`
 
 Let's add below code to the file
@@ -49,6 +50,7 @@ Add below integration script
 
 Your custom integration name must start with "**custom-**" like above.
 
+### File Permission
 Give proper permission for the script custom integration
 
 `chmod 750 /var/ossec/integrations/custom-chatbot-webhook`
@@ -58,4 +60,9 @@ Give proper permission for the script custom integration
 
 Then restart the wazuh manager `systemctl restart wazuh-manager`.
 
-Make sure your webhook secret is same as wazuh signature.
+### Debugging
+If you have a problem with custom integration, check the integration log with below command,
+
+`tail -f /var/ossec/logs/integrations.log`
+
+Make sure your webhook secret at wazuh integration block is same as your backend.
