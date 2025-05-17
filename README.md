@@ -58,7 +58,7 @@ Give proper permission for the script custom integration
 `chown root:wazuh /var/ossec/integrations/custom-chatbot-webhook
 `
 
-Then restart the wazuh manager `systemctl restart wazuh-manager`.
+Then restart the wazuh manager `systemctl restart wazuh-manager`
 
 ### Debugging
 If you have a problem with custom integration, check the integration log with below command,

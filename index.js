@@ -1,41 +1,22 @@
+const dotenv = require('dotenv');
+const helmet = require('helmet');
 const express = require('express');
 const bodyParser = require('body-parser');
-const helmet = require('helmet');
-const crypto = require('crypto');
-const dotenv = require('dotenv');
+const wazuhMiddleware = require('./wazuhMiddleware');
 
 // Load environment variables
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET || 'your-secure-secret-key';
 
 // Middleware
 app.use(helmet());
 app.use(bodyParser.json());
 app.set('trust proxy', true);
 
-// Verify Wazuh webhook signature
-const verifyWazuhSignature = (req, res, next) => {
-    const signature = req.headers['x-wazuh-signature'];
-    if (!signature) {
-        return res.status(401).json({ error: 'No signature provided' });
-    }
-    // Uncomment to log the signature was received from wazuh
-    // console.log('Signature:', signature);
-    const payload = JSON.stringify(req.body);
-    const expectedSignature = WEBHOOK_SECRET;
-
-    if (signature !== expectedSignature) {
-        return res.status(401).json({ error: 'Invalid signature' });
-    }
-
-    next();
-};
-
 // Webhook endpoint
-app.post('/wazuh/alerts', (req, res) => {
+app.post('/wazuh/alerts', wazuhMiddleware, (req, res) => {
     try {
         const alert = req.body;
         console.log('Received Wazuh alert:');
