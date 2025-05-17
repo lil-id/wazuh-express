@@ -2,7 +2,7 @@ const dotenv = require('dotenv');
 const helmet = require('helmet');
 const express = require('express');
 const bodyParser = require('body-parser');
-const wazuhMiddleware = require('./wazuhMiddleware');
+const { apiKeyMiddleware } = require('./wazuhMiddleware');
 
 // Load environment variables
 dotenv.config();
@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 app.set('trust proxy', true);
 
 // Webhook endpoint
-app.post('/wazuh/alerts', wazuhMiddleware, (req, res) => {
+app.post('/wazuh/alerts', apiKeyMiddleware, (req, res) => {
     try {
         const alert = req.body;
         console.log('Received Wazuh alert:');
