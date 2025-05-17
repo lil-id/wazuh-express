@@ -53,16 +53,16 @@ Your custom integration name must start with "**custom-**" like above.
 ### File Permission
 Give proper permission for the script custom integration
 
-`chmod 750 /var/ossec/integrations/custom-chatbot-webhook`
+```chmod 750 /var/ossec/integrations/custom-chatbot-webhook```
 
 `chown root:wazuh /var/ossec/integrations/custom-chatbot-webhook
 `
 
-Then restart the wazuh manager `systemctl restart wazuh-manager`
+Then restart the wazuh manager ```systemctl restart wazuh-manager```
 
 ### Debugging
 If you have a problem with custom integration, check the integration log with below command,
 
-`tail -f /var/ossec/logs/integrations.log`
+```tail -f /var/ossec/logs/integrations.log```
 
 Make sure your webhook secret at wazuh integration block is same as your backend.
